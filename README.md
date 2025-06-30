@@ -25,8 +25,14 @@ This is a mini side project built with **Express.js** that simulates a messaging
 
 3. **Start the server:**
    ```bash
-   npm start
+   node server.js
    ```
+
+4. **Connect clients:**
+   Open multiple terminal windows and run the following command in each:
+   ```bash
+    node client.js
+    ```
 
 ## Usage
 
