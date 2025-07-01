@@ -1,30 +1,13 @@
-const readline = require("node:readline");
+import WebSocket from "ws";
 
-const link = "http://localhost:3000/";
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
+const ws = new WebSocket("ws://localhost:8080/");
+
+ws.on("error", console.error);
+
+ws.on("open", function open() {
+  ws.send("something");
 });
 
-const askAction = () => {
-  return new Promise((resolve) => {
-    rl.question("Pick an action: ", resolve);
-  });
-};
-
-async function main() {
-  console.log("Starting...");
-  try {
-    const response = await fetch(link);
-    const data = response.text();
-    console.log("Server response: ", data);
-
-    const action = await askAction();
-    console.log("Action Taken: ", action);
-  } catch (error) {
-    console.log(error);
-    rl.close();
-  }
-}
-
-main();
+ws.on("message", function message(data) {
+  console.log("received: %s", data);
+});
