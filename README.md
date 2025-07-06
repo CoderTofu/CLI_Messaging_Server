@@ -1,10 +1,10 @@
 # CLI Messaging Server
 
-This is a mini side project built with **Express.js** that simulates a messaging server with support for multiple client connections and communication.
+This is a mini side project that simulates a messaging server with support for multiple client connections and communication.
 
 ## Features
 
-- Simulates a messaging server using Express.js
+- Simulates a messaging server using WebSocket
 - Supports multiple client connections
 - Enables communication between clients via the server
 

@@ -1,13 +1,33 @@
 import WebSocket from "ws";
+import readline from "node:readline";
 
 const ws = new WebSocket("ws://localhost:8080/");
 
-ws.on("error", console.error);
-
-ws.on("open", function open() {
-  ws.send("something");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
 });
 
+ws.on("open", () => {
+  console.log("Connected to server.");
+  rl.prompt();
+  rl.on("line", (userMsg) => {
+    ws.send(userMsg);
+    rl.prompt();
+  });
+});
+
+ws.on("error", console.error);
+
 ws.on("message", function message(data) {
-  console.log("received: %s", data);
+  console.log(`Server: ${data} `);
+});
+
+ws.on("close", () => {
+  console.log("Disconnected from server.");
+  rl.close();
+});
+
+ws.on("error", (err) => {
+  console.error("WebSocket error:", err.message);
 });
