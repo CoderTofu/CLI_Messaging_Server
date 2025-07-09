@@ -3,6 +3,8 @@
 A mini side project simulating a messaging server with support for multiple client connections and communication.  
 Inspired by [roadmap.sh](https://roadmap.sh/projects/broadcast-server).
 
+![CLI Messaging Server Screenshot](./sample.png)
+
 ## Features
 
 - Messaging server using WebSocket

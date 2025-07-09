@@ -8,29 +8,33 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-ws.on("open", () => {
-  console.log("Connected to server.");
-  rl.prompt();
-  rl.on("line", (userMsg) => {
-    ws.send(userMsg);
+try {
+  ws.on("open", () => {
+    console.log("Connected to server.");
+    rl.prompt();
+    rl.on("line", (userMsg) => {
+      ws.send(userMsg);
+      rl.prompt();
+    });
+  });
+
+  ws.on("error", console.error);
+
+  ws.on("message", function message(data) {
+    readline.clearLine(process.stdout, 0);
+    readline.cursorTo(process.stdout, 0);
+    console.log(`${data}`);
     rl.prompt();
   });
-});
 
-ws.on("error", console.error);
+  ws.on("close", () => {
+    console.log("Disconnected from server.");
+    rl.close();
+  });
 
-ws.on("message", function message(data) {
-  readline.clearLine(process.stdout, 0);
-  readline.cursorTo(process.stdout, 0);
-  console.log(`${data}`);
-  rl.prompt();    
-});
-
-ws.on("close", () => {
-  console.log("Disconnected from server.");
-  rl.close();
-});
-
-ws.on("error", (err) => {
-  console.error("WebSocket error:", err.message);
-});
+  ws.on("error", (err) => {
+    console.error("WebSocket error:", err.message);
+  });
+} catch (error) {
+  console.log("Server error...");
+}
