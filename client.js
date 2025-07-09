@@ -20,7 +20,10 @@ ws.on("open", () => {
 ws.on("error", console.error);
 
 ws.on("message", function message(data) {
-  console.log(`Server: ${data} `);
+  readline.clearLine(process.stdout, 0);
+  readline.cursorTo(process.stdout, 0);
+  console.log(`${data}`);
+  rl.prompt();    
 });
 
 ws.on("close", () => {
