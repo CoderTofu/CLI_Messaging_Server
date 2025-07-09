@@ -1,43 +1,38 @@
 # CLI Messaging Server
 
-This is a mini side project that simulates a messaging server with support for multiple client connections and communication.
+A mini side project simulating a messaging server with support for multiple client connections and communication.  
+Inspired by [roadmap.sh](https://roadmap.sh/projects/broadcast-server).
 
 ## Features
 
-- Simulates a messaging server using WebSocket
-- Supports multiple client connections
-- Enables communication between clients via the server
+- Messaging server using WebSocket
+- Multiple client connections
+- Communication between clients via the server
 
 ## Getting Started
 
-1. **Clone the repository:**
-
+1. **Clone the repository**
    ```bash
    git clone <repo-url>
    cd CLI_Messaging_Server
    ```
 
-2. **Install dependencies:**
-
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Start the server:**
+3. **Start the server**
    ```bash
    node server.js
    ```
 
-4. **Connect clients:**
-   Open multiple terminal windows and run the following command in each:
+4. **Connect clients**  
+   Open multiple terminal windows and run:
    ```bash
-    node client.js
-    ```
+   node client.js
+   ```
 
 ## Usage
 
-Clients can connect to the server and exchange messages through the command line interface.
-
-## License
-
-This project is for personal and educational use.
+Clients connect to the server and exchange messages through the command line interface.
